@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { UseOrigin } from "@/hooks/use-origin";
 
 import { Heading } from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
@@ -16,8 +17,8 @@ import { Separator } from "@/components/ui/separator";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { Trash } from "lucide-react";
 import { ApiAlert } from "@/components/ui/api-alert";
+import { Trash } from "lucide-react";
 
 
 interface SettingsFormProps {
@@ -35,6 +36,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
 }) => {
     const params = useParams();
     const router = useRouter();
+    const origin = UseOrigin();
 
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
