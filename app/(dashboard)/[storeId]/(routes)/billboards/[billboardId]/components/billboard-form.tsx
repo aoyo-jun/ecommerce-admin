@@ -5,11 +5,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import toast from "react-hot-toast";
-import axios from "axios";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { UseOrigin } from "@/hooks/use-origin";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 import { Heading } from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
@@ -17,8 +16,8 @@ import { Separator } from "@/components/ui/separator";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { ChevronLeft, Trash } from "lucide-react";
 import ImageUpload from "@/components/ui/image-upload";
+import { ChevronLeft, Trash } from "lucide-react";
 
 const formSchema = z.object({
     label: z.string().min(1),
@@ -36,7 +35,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
 }) => {
     const params = useParams();
     const router = useRouter();
-    const origin = UseOrigin();
 
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -62,8 +60,8 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
             } else {
                 await axios.post(`/api/${params.storeId}/billboards`, data);
             }
-            router.refresh();
             router.push(`/${params.storeId}/billboards`)
+            router.refresh();
             toast.success(toastMessage);
         } catch (error) {
             toast.error("Something went wrong.");
@@ -77,7 +75,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
             setLoading(true);
             await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`)
             router.refresh();
-            router.push("/")
+            router.push(`/${params.storeId}/billboards`)
             toast.success("Billboard deleted.")
         } catch (error) {
             toast.error("Make sure you removed all categories using this billboard first.");
@@ -164,7 +162,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
                     </Button>
                 </form>
             </Form>
-            <Separator />
         </>
     )
 }
