@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation"
 
-import { BillboardColumn, columns } from "./columns"
+import { ColorColumn, columns } from "./columns"
 import { useMediaQuery } from 'react-responsive';
 
 import { Button } from "@/components/ui/button"
@@ -12,11 +12,11 @@ import { DataTable } from "@/components/ui/data-table"
 import { ApiList } from "@/components/ui/api-list"
 import { Plus } from "lucide-react"
 
-interface BillboardClientProps {
-    data: BillboardColumn[]
+interface ColorClientProps {
+    data: ColorColumn[]
 }
 
-export const BillboardClient: React.FC<BillboardClientProps> = ({
+export const ColorClient: React.FC<ColorClientProps> = ({
     data
 }) => {
     const params = useParams();
@@ -27,22 +27,22 @@ export const BillboardClient: React.FC<BillboardClientProps> = ({
         <>
             <div className="flex items-center justify-between">
                 <Heading
-                    title={`Billboards (${data.length})`}
-                    description="Manage billboards for your store"
+                    title={`Colors (${data.length})`}
+                    description="Manage colors for your store"
                 />
-                <Button size={isMobile ? "icon" : "default"} onClick={() => router.push(`/${params.storeId}/billboards/new`)}>
+                <Button size={isMobile ? "icon" : "default"} onClick={() => router.push(`/${params.storeId}/colors/new`)}>
                     {isMobile ? (<Plus className="h-4 w-4" />) : (<Plus className="mr-2 h-4 w-4" />)}
                     {!isMobile && "Add New"}
                 </Button>
             </div>
             <Separator />
-            <DataTable columns={columns} data={data} searchKey="label" />
+            <DataTable columns={columns} data={data} searchKey="name" />
             <Heading
                 title="API"
-                description="API calls for Billboards"
+                description="API calls for Colors"
             />
             <Separator />
-            <ApiList entityName="billboards" entityIdName="billboardId" />
+            <ApiList entityName="colors" entityIdName="colorId" />
         </>
     )
 }

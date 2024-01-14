@@ -132,7 +132,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input disabled={loading} placeholder="Size name" {...field} />
+                                        <Input className="md:w-full w-60" disabled={loading} placeholder="Size name" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -147,7 +147,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({
                                 <FormItem>
                                     <FormLabel>Value</FormLabel>
                                     <FormControl>
-                                        <Input disabled={loading} placeholder="Size value" {...field} />
+                                        <Input className="md:w-full w-60" disabled={loading} placeholder="Size value (ex: S, M, L...)" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

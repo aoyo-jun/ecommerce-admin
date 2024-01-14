@@ -107,7 +107,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input disabled={loading} placeholder="Store mame" {...field} />
+                                        <Input className="md:w-full w-60" disabled={loading} placeholder="Store mame" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
