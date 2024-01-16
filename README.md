@@ -1,4 +1,4 @@
-# Full Stack E-Commerce + Dashboard & CMS using React & Next.js
+# Full Stack E-Commerce + Dashboard & CMS using React & Next.js (Admin)
 
 The repository for my Full Stack E-Commerce website, I created this project following this [course](https://www.youtube.com/watch?v=5miHyP6lExg), but with my own little tweaks such as responsive Admin page.
 
